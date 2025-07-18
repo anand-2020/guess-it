@@ -4,100 +4,96 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Guess It !</title>
-  <style>
+ <style>
     body {
-  font-family: sans-serif;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background: #121213;
-  color: #fff;
-  padding: 10px;
-  box-sizing: border-box;
-  height: 100vh;
-}
-
-h1 {
-  margin-bottom: 10px;
-}
-
-#board {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 5px;
-  width: 100%;
-  max-width: 280px;
-  margin: 0 auto 20px auto; /* center horizontally */
-}
-
-.cell {
-  width: 100%;
-  aspect-ratio: 1 / 1;
-  border: 2px solid #3a3a3c;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.5rem;
-  font-weight: bold;
-  text-transform: uppercase;
-  background: #121213;
-}
-
-.correct {
-  background: #538d4e;
-  border-color: #538d4e;
-  color: #fff;
-}
-
-.present {
-  background: #b59f3b;
-  border-color: #b59f3b;
-  color: #fff;
-}
-
-.absent {
-  background: #3a3a3c;
-  border-color: #3a3a3c;
-  color: #fff;
-}
-
-#keyboard {
-  display: grid;
-  grid-template-columns: repeat(9, 1fr);
-  gap: 5px;
-  width: 100%;
-  max-width: 350px;
-  margin: 20px auto 0 auto; /* center horizontally */
-}
-
-.key {
-  padding: 15px 10px;
-  background-color: #818384;
-  color: white;
-  font-weight: bold;
-  border: none;
-  border-radius: 5px;
-  text-transform: uppercase;
-  cursor: pointer;
-}
-
-.key.correct {
-  background-color: #538d4e !important;
-}
-
-.key.present {
-  background-color: #b59f3b !important;
-}
-
-.key.absent {
-  background-color: #3a3a3c !important;
-}
-
-#message {
-  margin-top: 10px;
-  font-size: 1rem;
-  text-align: center;
-}
+      font-family: sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background: #121213;
+      color: #fff;
+      padding: 10px;
+      box-sizing: border-box;
+      height: 100vh;
+    }
+    h1 {
+      margin-bottom: 10px;
+    }
+    #board {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 5px;
+      margin-bottom: 20px;
+      width: 100%;
+      max-width: 280px;
+    }
+    .cell {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      border: 2px solid #3a3a3c;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      font-weight: bold;
+      text-transform: uppercase;
+      background: #121213;
+    }
+    .correct {
+      background: #538d4e;
+      border-color: #538d4e;
+      color: #fff;
+    }
+    .present {
+      background: #b59f3b;
+      border-color: #b59f3b;
+      color: #fff;
+    }
+    .absent {
+      background: #3a3a3c;
+      border-color: #3a3a3c;
+      color: #fff;
+    }
+    #keyboard {
+      display: grid;
+      grid-template-columns: repeat(10, 1fr);
+      gap: 5px;
+      max-width: 350px;
+      width: 100%;
+      margin-top: 40px;
+    }
+    .key {
+      padding-top: 20px;
+      padding-bottom: 20px;
+      padding-left: 10px;
+      padding-right: 10px;
+      background-color: #818384;
+      color: white;
+      font-weight: bold;
+      border: none;
+      border-radius: 5px;
+      text-transform: uppercase;
+      cursor: pointer;
+    }
+    .key.correct {
+      background-color: #538d4e !important;
+    }
+    .key.present {
+      background-color: #b59f3b !important;
+    }
+    .key.absent {
+      background-color: #3a3a3c !important;
+    }
+    #message {
+      margin-top: 10px;
+      font-size: 1rem;
+    }
+    #board,
+    #keyboard {
+        width: 100%;
+        margin-left: 0 auto;
+        margin-right: 0 auto;
+    }
 
 #submit {
   background-color: #538d4e;
@@ -128,11 +124,12 @@ h1 {
     let WORD_LIST = [];
     let WORD = "";
     const backspace = "✕";
+    const noLetter = " ";
 
     const keys = [
       "q", "w", "e", "r", "t", "y", "u", "i", "o", "p",
       "a", "s", "d", "f", "g", "h", "j", "k", "l", "z",
-      "x", "c", "v", "b", "n", "m", backspace
+      noLetter, "x", "c", "v", "b", "n", "m", noLetter, backspace, noLetter
     ];
 
     //Load word list from .txt and pick random word
